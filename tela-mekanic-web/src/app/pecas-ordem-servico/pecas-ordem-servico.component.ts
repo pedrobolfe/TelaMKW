@@ -33,27 +33,31 @@ export class PecasOrdemServicoComponent {
   }
 
   consulta(placa: string, numOS: string) {
-    this.dados$.subscribe(dados => {
+    if (placa && numOS) {
+      this.dados$.subscribe(dados => {
 
-      const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) =>
-        item.placa === placa && item.ordemServico.some(os => os.numero === numOS)
-      );
-
-      if (encontrado) {
-          const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
-          if (ordemServico) {
-              // Aqui você pode obter as peças e suas descrições
-              ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; }) => {
-                  // Armazena os dados nas variáveis se necessário
-                  this.codPeca.push(peca.codigo_peca); // ou criar um array para armazenar
-                  this.descPecas.push(peca.descricao); // ou criar um array para armazenar
-              });
-          } else {
-              alert("Ordem de Serviço não encontrada.");
-          }
-      } else {
-          alert("Peça não encontrada");
-      }
-  });
+        const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) =>
+          item.placa === placa && item.ordemServico.some(os => os.numero === numOS)
+        );
+  
+        if (encontrado) {
+            const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
+            if (ordemServico) {
+                // Aqui você pode obter as peças e suas descrições
+                ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; }) => {
+                    // Armazena os dados nas variáveis se necessário
+                    this.codPeca.push(peca.codigo_peca); // ou criar um array para armazenar
+                    this.descPecas.push(peca.descricao); // ou criar um array para armazenar
+                });
+            } else {
+                alert("Ordem de Serviço não encontrada.");
+            }
+        } else {
+            alert("Peça não encontrada");
+        }
+      });
+    } else {
+      alert("Digite algo");
+    }
   }
 }

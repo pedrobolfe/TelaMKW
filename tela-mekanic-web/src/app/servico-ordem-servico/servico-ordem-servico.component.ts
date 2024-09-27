@@ -41,27 +41,32 @@ export class ServicoOrdemServicoComponent {
   }
 
   consulta(placa: string, numOS: string) {
-    this.dados$.subscribe(dados => {
+    if (placa && numOS) {
+      this.dados$.subscribe(dados => {
 
-      const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) =>
-        item.placa === placa && item.ordemServico.some(os => os.numero === numOS)
-      );
-
-      if (encontrado) {
-          const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
-          if (ordemServico) {
-              // Aqui você pode obter as peças e suas descrições
-              ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; }) => {
-                  // Armazena os dados nas variáveis se necessário
-                  this.codServico.push(servicos.codigo_servico); // ou criar um array para armazenar
-                  this.descServico.push(servicos.descricao); // ou criar um array para armazenar
-              });
-          } else {
-              alert("Ordem de Serviço não encontrada.");
-          }
-      } else {
-          alert("Serviço não encontrado");
-      }
-  });
+        const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) =>
+          item.placa === placa && item.ordemServico.some(os => os.numero === numOS)
+        );
+  
+        if (encontrado) {
+            const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
+            if (ordemServico) {
+                // Aqui você pode obter as peças e suas descrições
+                ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; }) => {
+                    // Armazena os dados nas variáveis se necessário
+                    this.codServico.push(servicos.codigo_servico); // ou criar um array para armazenar
+                    this.descServico.push(servicos.descricao); // ou criar um array para armazenar
+                });
+            } else {
+                alert("Ordem de Serviço não encontrada.");
+            }
+        } else {
+            alert("Serviço não encontrado");
+        }
+      });
+    } else {
+      alert("Digite algo");
+    }
+    
   }
 }

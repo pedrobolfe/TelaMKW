@@ -25,13 +25,10 @@ export class AppComponent {
     private http: HttpClient
   ) {}
 
+  formPreenchido: { placa: string; numOS: string; valido: boolean } | null = null;
 
-  
-
-  formPreenchido:{ placa: string; numOS: string} | null = null;
-
-  onFormPreenchido(event: { placa: string; numOS: string}) {
-    this.formPreenchido = event;
+  onFormPreenchido(event: { placa: string; numOS: string; valido: boolean }) {
+    this.formPreenchido = event.valido ? event : null;
   }
 
 }

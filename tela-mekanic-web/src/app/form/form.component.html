@@ -4,11 +4,18 @@
             <div class="row">
                 <div class="col">
                     <label for="placa" class="form-label">Placa*</label>
-                    <input type="text"  formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa">
+                    <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa">
+                    <div *ngIf="form.get('inPlaca')?.invalid && form.get('inPlaca')?.touched" class="text-danger">
+                        <div *ngIf="form.get('inPlaca')?.errors?.['required']">Placa é obrigatória.</div>
+                        <div *ngIf="form.get('inPlaca')?.errors?.['pattern']">Placa deve ter 7 caracteres (letras e números).</div>
+                    </div>
                 </div>
                 <div class="col">
                     <label for="numOs" class="form-label">OS*</label>
-                    <input type="text"formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
+                    <input type="text" formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
+                    <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
+                        <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+                    </div>
                 </div>
             </div>
             <hr>
