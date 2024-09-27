@@ -1,0 +1,36 @@
+<div class="card mt-3">
+    <div class="card-header ms-1 p-1" >
+        <p class="m-0">Peças</p>
+    </div>
+    <div class="tabele-responsice">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>tempo</th>
+                </tr>
+            </thead>
+            <tbody class="ms-1 p-1" >
+              <tr class="m-0" *ngFor="let i of codServico; let index = index">
+                <td>
+                  <input type="text" formControlName="codigoServico" class="form-control col-2" [value]="codServico[index]" readonly>
+                </td>
+                <td>
+                  <input type="text" formControlName="descricaoServico" class="form-control col-1" [value]="descServico[index]" readonly>
+                </td>
+                <td>
+                    <input type="time" formControlName="tempo" class="form-control col-2" readonly>
+                </td>
+                <td class="align-content-center">
+                    <button type="button" class="btn btn-primary" (click)="openDialog()">
+                        Play
+                    </button>
+                </td>
+              </tr>
+            </tbody>
+        </table>  
+    </div>
+</div>
+
+<app-tempo-servico-dialog #tempoServicoModal [codServico]="codServico[0]" [nomeServico]="descServico[0]"></app-tempo-servico-dialog>

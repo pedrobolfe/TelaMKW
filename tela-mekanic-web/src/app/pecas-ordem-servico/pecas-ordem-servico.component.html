@@ -1,0 +1,31 @@
+<div class="card mt-3">
+    <div class="card-header ms-1 p-1" >
+        <p class="m-0">Peças</p>
+    </div>
+    <div class="tabele-responsice">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody class="ms-1 p-1" >
+              <tr class="m-0" *ngFor="let i of codPeca; let index = index">
+                <td>
+                  <input type="text" formControlName="codigoPeca" class="form-control" [value]="codPeca[index]" readonly>
+                </td>
+                <td>
+                  <input type="text" formControlName="descricaoPeca" class="form-control" [value]="descPecas[index]" readonly>
+                </td>
+                <td class="align-content-center">
+                  <div class="form-check d-flex justify-content-center align-items-center">
+                    <input type="checkbox" class="form-check-input" style="transform: scale(1.5);" #checkbox>
+                    <label class="form-check-label">ﾠAplicado</label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>  
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@media (max-width: 576px) {
+    .modal-body {
+        padding: 1rem; /* Adiciona um padding menor em telas pequenas */
+    }
+    .modal-header {
+        padding: 0.5rem; /* Reduz o padding do cabeçalho */
+    }
+    .modal-footer {
+        padding: 0.5rem; /* Reduz o padding do rodapé */
+    }
+    .display-1 {
+        font-size: 2.5rem; /* Ajusta o tamanho da fonte para dispositivos pequenos */
+    }
+}
+
+.modal-content {
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+.display-1 {
+    font-size: 4rem; /* Tamanho da fonte do cronômetro */
+    transition: all 0.3s; /* Efeito de transição suave */
+}
+
+.display-1:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.alert {
+    background-color: #e7f3fe; /* Cor de fundo da alerta */
+    border-color: #b8daff; /* Cor da borda da alerta */
+    border-radius: 10px; /* Bordas arredondadas */
+}

@@ -1,0 +1,47 @@
+<div class="card mt-1">
+    <div class="card-body">
+        <form [formGroup]="form" >
+            <div class="row">
+                <div class="col">
+                    <label for="placa" class="form-label">Placa*</label>
+                    <input type="text"  formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa">
+                </div>
+                <div class="col">
+                    <label for="numOs" class="form-label">OS*</label>
+                    <input type="text"formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                    <label for="placa" class="form-label">Placa</label>
+                    <input type="text" formControlName="outPlaca" class="form-control text-uppercase" readonly>
+                </div>
+                <div class="col-4">
+                    <label for="numOs" class="form-label">Marca</label>
+                    <input type="text" formControlName="outMarca" class="form-control text-uppercase" readonly>
+                </div>
+                <div class="col-4">
+                    <label for="numOs" class="form-label">Modelo</label>
+                    <input type="text" formControlName="outModelo" class="form-control text-uppercase" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="placa" class="form-label">Chassi</label>
+                    <input type="text" formControlName="outChassi" class="form-control text-uppercase" readonly>
+                </div>
+                <div class="col-4">
+                    <label for="numOs" class="form-label">Cilindrada</label>
+                    <input type="text" formControlName="outCilindrada" class="form-control text-uppercase" readonly>
+                </div>
+                <div class="col-4">
+                    <label for="numOs" class="form-label">Ano/Modelo</label>
+                    <input type="text" formControlName="outAnoModelo" class="form-control text-uppercase" readonly>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
