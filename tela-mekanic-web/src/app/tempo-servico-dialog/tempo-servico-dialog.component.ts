@@ -17,7 +17,6 @@ declare var bootstrap: any;
 export class TempoServicoDialogComponent {
   @ViewChild('tempoServicoModal') modalElement!: ElementRef;
 
-
   constructor (
     private service: FormServiceService
   ) {}

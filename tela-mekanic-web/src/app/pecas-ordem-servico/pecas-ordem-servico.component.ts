@@ -16,7 +16,6 @@ export class PecasOrdemServicoComponent {
   constructor(
     private service: FormServiceService
   ){}
-  
   dados$: Observable<any> = of([]);
 
   @Input() placa!: string;
@@ -29,7 +28,6 @@ export class PecasOrdemServicoComponent {
     this.dados$ = this.service.getDados();
     
     this.consulta(this.placa, this.numOS);
-    
   }
 
   consulta(placa: string, numOS: string) {
