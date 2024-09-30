@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormServiceService } from '../form-service/form-service.service';
-import { delay, Observable, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servico-dialog.component';
 
 @Component({
@@ -24,32 +24,41 @@ export class ServicoOrdemServicoComponent {
   
   dados$: Observable<any> = of([]);
   
-  @Input() placa!: string;
-  @Input() numOS!: string;
-  codServico: string[] = [];
-  descServico: string[] = [];
+  @Input() placa$!: BehaviorSubject<string | undefined>;
+  @Input() numOS$!: BehaviorSubject<string | undefined>;
+
+  inPlaca: string = "";
+  inNumOS: string = "";
+
+  codServico: string[] = []; //vet para armazenar os serviços da consulta, para depois exibir
+  descServico: string[] = []; // ...
   tempoServico: number[] = [];
 
   ngOnInit() {
-    delay(2000);
     this.dados$ = this.service.getDados();
     
-    this.consulta(this.placa, this.numOS);
+    combineLatest([this.placa$, this.numOS$]).subscribe(([placa, numOS]) => {
+      if (placa && numOS) {
+        this.inPlaca = placa;
+        this.inNumOS = numOS;
+        this.consulta(placa, numOS);
+      }
+    });
   }
 
   openDialog(descServ: string, codServ: string): void {
-    this.tempoServicoComponent.openModel(descServ, codServ, this.placa, this.numOS);
+    this.tempoServicoComponent.openModel(descServ, codServ, this.inPlaca, this.inNumOS);
   }
 
   convertTempo(tempoSegundos: number): string {
-    const dias = Math.floor(tempoSegundos / 86400);
-    const horas = Math.floor((tempoSegundos % 86400) / 3600);
+    //const dias = Math.floor(tempoSegundos / 86400);
+    //const horas = Math.floor((tempoSegundos % 86400) / 3600);
     const minutos = Math.floor((tempoSegundos % 3600) / 60);
 
     return `${minutos >= 1 ? minutos : "-"}`
   }
 
-  consulta(placa: string, numOS: string) {
+  consulta(placa: string, numOS: string) { // melhoria, realizar apenas uma consulta la no Service, depois consultar la
     if (placa && numOS) {
       this.dados$.subscribe(dados => {
 
@@ -60,21 +69,23 @@ export class ServicoOrdemServicoComponent {
         if (encontrado) {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
             if (ordemServico) {
+                this.codServico = []; 
+                this.descServico = [];
+                this.tempoServico = [];
                 ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; tempo_duracao: number}) => {
-                    this.codServico.push(servicos.codigo_servico); 
-                    this.descServico.push(servicos.descricao);
-                    this.tempoServico.push(servicos.tempo_duracao);
+                  this.codServico.push(servicos.codigo_servico); 
+                  this.descServico.push(servicos.descricao);
+                  this.tempoServico.push(servicos.tempo_duracao);
                 });
             } else {
-                alert("Ordem de Serviço não encontrada.");
+              console.log("Ordem de Serviço não encontrada.");
             }
         } else {
-            alert("Serviço não encontrado");
+          console.log("Serviço não encontrado");
         }
       });
     } else {
-      alert("Digite algo");
+      console.log("Campos não preenchidos");
     }
-    
   }
 }

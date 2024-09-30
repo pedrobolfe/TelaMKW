@@ -219,7 +219,7 @@
             {
               "codigo_servico": "S011",
               "descricao": "Substituição das Velas",
-              "tempo_duracao": 37
+              "tempo_duracao": 63
             }
           ]
         }
@@ -236,12 +236,6 @@
       "ordemServico": [
         {
           "numero": "OS008",
-          "pecas": [
-            {
-              "codigo_peca": "P012",
-              "descricao": "Bateria"
-            }
-          ],
           "servicos": [
             {
               "codigo_servico": "S012",
@@ -273,7 +267,7 @@
             {
               "codigo_servico": "S013",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 0
+              "tempo_duracao": 22
             }
           ]
         }
@@ -289,7 +283,7 @@
       "Ano_anoModelo": "2020/2020",
       "ordemServico": [
         {
-          "numero": "OS010",
+          "numero": "",
           "pecas": [
             {
               "codigo_peca": "P014",
@@ -301,6 +295,96 @@
               "codigo_servico": "S014",
               "descricao": "Troca de Pastilhas de Freio",
               "tempo_duracao": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "placa": "MNO-5678",
+      "marca": "Ford",
+      "modelo": "Maverick",
+      "chassi": "1FABP4236GH170123",
+      "cilindrada": "5.0",
+      "Ano_anoModelo": "1976/1976",
+      "ordemServico": [
+        {
+          "numero": "OS013",
+          "pecas": [
+            {
+              "codigo_peca": "P018",
+              "descricao": "Filtro de Ar"
+            },
+            {
+              "codigo_peca": "P019",
+              "descricao": "Radiador"
+            }
+          ],
+          "servicos": [
+            {
+              "codigo_servico": "S018",
+              "descricao": "Troca do Filtro de Ar",
+              "tempo_duracao": 1800
+            },
+            {
+              "codigo_servico": "S019",
+              "descricao": "Troca do Radiador",
+              "tempo_duracao": 3000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "placa": "XYZ-5678",
+      "marca": "Dodge",
+      "modelo": "Dart",
+      "chassi": "WP0ZZZ96ZKS123456",
+      "cilindrada": "5.2",
+      "Ano_anoModelo": "1973/1973",
+      "ordemServico": [
+        {
+          "numero": "OS014",
+          "pecas": [
+            {
+              "codigo_peca": "P020",
+              "descricao": "Amortecedores"
+            }
+          ],
+          "servicos": [
+            {
+              "codigo_servico": "S020",
+              "descricao": "Troca de Amortecedores",
+              "tempo_duracao": 2400
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "placa": "GHI-7890",
+      "marca": "Chevrolet",
+      "modelo": "Opala",
+      "chassi": "3N1AB7AP5FL123457",
+      "cilindrada": "4.1",
+      "Ano_anoModelo": "1985/1985",
+      "ordemServico": [
+        {
+          "numero": "OS011",
+          "pecas": [
+            {
+              "codigo_peca": "P015",
+              "descricao": "Correia Dentada"
+            }
+          ],
+          "servicos": [
+            {
+              "codigo_servico": "S015",
+              "descricao": "Substituição da Correia Dentada",
+              "tempo_duracao": 1200
             }
           ]
         }

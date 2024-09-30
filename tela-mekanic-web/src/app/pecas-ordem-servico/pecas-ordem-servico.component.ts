@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { delay, Observable, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, delay, Observable, of } from 'rxjs';
 import { FormServiceService } from '../form-service/form-service.service';
 import { CommonModule } from '@angular/common';
 
@@ -13,21 +13,27 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class PecasOrdemServicoComponent {
+  subscription: any;
   constructor(
     private service: FormServiceService
   ){}
   dados$: Observable<any> = of([]);
 
-  @Input() placa!: string;
-  @Input() numOS!: string;
+  @Input() placa$!: BehaviorSubject<string | undefined>;
+  @Input() numOS$!: BehaviorSubject<string | undefined>;
   codPeca: string[] = [];
   descPecas: string[] = [];
 
   ngOnInit() {
     delay(2000);
     this.dados$ = this.service.getDados();
-    
-    this.consulta(this.placa, this.numOS);
+
+    combineLatest([this.placa$, this.numOS$]).subscribe(([placa, numOS]) => {
+      if (placa && numOS) {
+        this.consulta(placa, numOS);
+      }
+    });
+    //this.consulta(this.placa, this.numOS);
   }
 
   consulta(placa: string, numOS: string) {
@@ -39,20 +45,25 @@ export class PecasOrdemServicoComponent {
   
         if (encontrado) {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
+            this.codPeca = [], this.descPecas = [];
             if (ordemServico) {
                 ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; }) => {
                     this.codPeca.push(peca.codigo_peca); 
                     this.descPecas.push(peca.descricao); 
                 });
             } else {
-                alert("Ordem de Serviço não encontrada.");
+                console.log("Ordem de Serviço não encontrada.");
             }
         } else {
-            alert("Peça não encontrada");
+          console.log("Peça não encontrada");
         }
       });
     } else {
-      alert("Digite algo");
+      console.log("Campos não preenchidos");
     }
   }
+
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 }

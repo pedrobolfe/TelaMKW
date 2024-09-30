@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { delay } from 'rxjs';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormServiceService } from '../form-service/form-service.service';
 
 declare var bootstrap: any;
