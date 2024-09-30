@@ -62,7 +62,7 @@ export class TempoServicoDialogComponent {
           this.horas = 0;
           this.dias++;
         }
-      }, 1);
+      }, 1000);
     }
   }
 
