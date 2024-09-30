@@ -33,7 +33,6 @@ export class PecasOrdemServicoComponent {
   consulta(placa: string, numOS: string) {
     if (placa && numOS) {
       this.dados$.subscribe(dados => {
-
         const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) =>
           item.placa === placa && item.ordemServico.some(os => os.numero === numOS)
         );
