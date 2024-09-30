@@ -43,11 +43,9 @@ export class PecasOrdemServicoComponent {
         if (encontrado) {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
             if (ordemServico) {
-                // Aqui você pode obter as peças e suas descrições
                 ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; }) => {
-                    // Armazena os dados nas variáveis se necessário
-                    this.codPeca.push(peca.codigo_peca); // ou criar um array para armazenar
-                    this.descPecas.push(peca.descricao); // ou criar um array para armazenar
+                    this.codPeca.push(peca.codigo_peca); 
+                    this.descPecas.push(peca.descricao); 
                 });
             } else {
                 alert("Ordem de Serviço não encontrada.");

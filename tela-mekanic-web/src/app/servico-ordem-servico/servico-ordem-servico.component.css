@@ -1,0 +1,46 @@
+.card-header {
+    background-color: #007BFF; /* Azul especificado */
+    color: white; /* Texto branco */
+    border-radius: 0.25rem 0.25rem 0 0;
+    padding: 10px; /* Controle de padding */
+    margin: 0; /* Remove qualquer margem */
+}
+
+.table-responsive {
+    margin: 0; /* Remove margem na tabela */
+    padding: 0; /* Remove padding na tabela */
+}
+
+.table {
+    margin: 0; /* Garante que não haja espaço à esquerda da tabela */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-striped tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.15);
+}
+
+input[readonly] {
+    background-color: #e2e1e1;
+    border: none;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: white;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.form-check-input {
+    transform: scale(1.2);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}

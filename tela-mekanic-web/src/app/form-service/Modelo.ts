@@ -23,5 +23,5 @@ export interface Peca {
 export interface Servico {
     codigo_servico: string;
     descricao: string;
-    tempo_duracao: string;
+    tempo_duracao: number;
 }

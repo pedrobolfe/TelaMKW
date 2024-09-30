@@ -16,9 +16,7 @@ declare var bootstrap: any;
 })
 export class TempoServicoDialogComponent {
   @ViewChild('tempoServicoModal') modalElement!: ElementRef;
-  
-  @Input() nomeServico: string = "";
-  @Input() codServico: string = "";
+
 
   constructor (
     private service: FormServiceService
@@ -27,6 +25,7 @@ export class TempoServicoDialogComponent {
   placa: string = '';
   numOS: string = '';
   codigoServico: string = '';
+  descServico: string = '';
 
   intervalId: any;
   dias: number= 0;
@@ -36,7 +35,12 @@ export class TempoServicoDialogComponent {
   contando: boolean = false;
 
   // Abrir o modal usando Bootstrap
-  openModel() {
+  openModel(descServ: string, codServico: string, out_placa: string, numeroOS: string) {
+    this.placa = out_placa;
+    this.numOS = numeroOS;
+    this.descServico = descServ;
+    this.codigoServico = codServico;
+
     const modal = new bootstrap.Modal(this.modalElement.nativeElement);
     modal.show();
   }
@@ -59,7 +63,6 @@ export class TempoServicoDialogComponent {
           this.horas = 0;
           this.dias++;
         }
-        // Adicione a lógica para dias, se necessário
       }, 1);
     }
   }
@@ -72,30 +75,28 @@ export class TempoServicoDialogComponent {
   // Parar o temporizador e resetar
   stopTempo() {
     this.pauseTempo(); // Para o temporizador
-    //this.guardarTempo();
-    //alert(`O serviço durou ${this.dias === 0 ? "" : this.dias + " dias e "}${this.horas === 0 ? "" : this.horas + " horas e "}${this.minutos === 0 ? "" : this.minutos + " minutos "}${this.segundos === 0 ? "" : this.segundos +" segundos"}`)
-    
+    this.guardarTempo();
+
     this.segundos = 0; // Reseta os segundos
     this.minutos = 0; 
     this.horas = 0; 
     this.dias = 0;
   }
 
-  // setDados(placa: string, numOS: string, codServico: string): void {
-  //   alert(" ==== "+placa + ": " + numOS + ": " + codServico)
-  //   this.placa = placa;
-  //   this.numOS = numOS;
-  //   this.codigoServico = codServico;
-  // }
+  setDados(placa: string, numOS: string): void {
+    //alert(" ==== "+placa + ": " + numOS + ": " + codServico)
+    this.placa = placa;
+    this.numOS = numOS;
+  }
 
-  // guardarTempo(): void {
-  //   const tempoDuracao = `${this.dias} dias, ${this.horas} horas, ${this.minutos} minutos, ${this.segundos} segundos`;
+  guardarTempo(): void {
+    const tempoDuracao = this.dias * 86400 + this.horas * 3600 + this.minutos * 60 + this.segundos;
     
-  //   //alert(`O serviço durou ${tempoDuracao}`);
+    alert(`minutos ${this.minutos}`);
     
-  //   // Aqui você chamaria o método para atualizar o tempo no JSON
-  //   this.service.updateTempo(this.placa, this.numOS, this.codigoServico, tempoDuracao).subscribe(response => {
-  //       console.log('Tempo de duração atualizado:', response);
-  //   });
-  // }
+    // Aqui você chamaria o método para atualizar o tempo no JSON
+    this.service.updateTempo(this.placa, this.numOS, this.codigoServico, tempoDuracao).subscribe(response => {
+        alert('Tempo de duração atualizado: '+ response);
+    });
+  }
 }

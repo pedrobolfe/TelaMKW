@@ -1,0 +1,44 @@
+.card {
+    border-radius: 0.5rem; /* Canto arredondado */
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.card-body {
+    padding: 20px; /* Aumenta o padding para mais espaçamento interno */
+    background-color: #f8f9fa; /* Cor de fundo suave */
+}
+
+.form-label {
+    font-weight: bold; /* Negrito nas labels */
+    color: #495057; /* Cor do texto da label */
+}
+
+.form-control {
+    border-radius: 0.25rem; /* Canto levemente arredondado */
+    border: 1px solid #ced4da; /* Borda de campo */
+    box-shadow: none; /* Remove sombra */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Cor de destaque no campo focado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra ao focar */
+}
+
+.text-danger {
+    font-size: 0.875rem; /* Texto de erro menor */
+    font-weight: bold; /* Negrito no erro */
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid #dee2e6; /* Linha fina entre as seções */
+}
+
+.row {
+    margin-bottom: 1rem; /* Espaçamento entre as linhas do formulário */
+}
+
+input::placeholder {
+    color: #6c757d; /* Cor de placeholder mais escura */
+}

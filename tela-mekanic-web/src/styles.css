@@ -2,3 +2,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (max-width: 768px) {
+    .form-label {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte em telas menores */
+    }
+    
+    .form-control {
+        padding: 0.5rem; /* Ajusta o padding em telas menores */
+    }
+
+    .card {
+        margin: 0.5rem; /* Reduz o espaço ao redor do card */
+    }
+}

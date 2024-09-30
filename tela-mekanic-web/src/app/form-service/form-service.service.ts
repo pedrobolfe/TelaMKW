@@ -17,11 +17,7 @@ export class FormServiceService {
     return this.http.get<Carro[]>(this.API_URL).pipe();
   }
 
-  updateTempo(placa: string, numOS: string, codServico: string, tempoDuracao: string): Observable<any> {
-    placa = "ABC-1234";
-    numOS = "OS001";
-    codServico = "S001";
-    tempoDuracao = "46,57";
+  updateTempo(placa: string, numOS: string, codServico: string, tempoDuracao: number): Observable<any> {
 
     const url = `${this.API_URL}?placa=${placa}`; // URL ajustada para buscar pelo carro com a placa
   
@@ -33,7 +29,7 @@ export class FormServiceService {
                 if (ordemServico) {
                     const servico = ordemServico.servicos.find(s => s.codigo_servico === codServico);
                     if (servico) {
-                        servico.tempo_duracao = tempoDuracao; // Atualiza o tempo de duração do serviço
+                        servico.tempo_duracao += tempoDuracao; // Atualiza o tempo de duração do serviço
                         //alert(this.http.patch(`${this.API_URL}/${carro.id}`, { ordemServico: carro.ordemServico }));
                         // Agora fazemos o PATCH para salvar as alterações
                         return this.http.patch(`${this.API_URL}/${carro.id}`, { ordemServico: carro.ordemServico });

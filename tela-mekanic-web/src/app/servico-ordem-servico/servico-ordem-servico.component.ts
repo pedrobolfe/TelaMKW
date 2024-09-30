@@ -16,6 +16,7 @@ import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servi
 })
 export class ServicoOrdemServicoComponent {
   @ViewChild(TempoServicoDialogComponent) tempoServicoComponent!: TempoServicoDialogComponent;
+  outDescServico: string = "";
 
   constructor(
     private service: FormServiceService
@@ -27,17 +28,25 @@ export class ServicoOrdemServicoComponent {
   @Input() numOS!: string;
   codServico: string[] = [];
   descServico: string[] = [];
+  tempoServico: number[] = [];
 
   ngOnInit() {
     delay(2000);
     this.dados$ = this.service.getDados();
     
     this.consulta(this.placa, this.numOS);
-    
   }
 
-  openDialog(): void {
-    this.tempoServicoComponent.openModel();
+  openDialog(descServ: string, codServ: string): void {
+    this.tempoServicoComponent.openModel(descServ, codServ, this.placa, this.numOS);
+  }
+
+  convertTempo(tempoSegundos: number): string {
+    const dias = Math.floor(tempoSegundos / 86400);
+    const horas = Math.floor((tempoSegundos % 86400) / 3600);
+    const minutos = Math.floor((tempoSegundos % 3600) / 60);
+
+    return `${minutos >= 1 ? minutos : "-"}`
   }
 
   consulta(placa: string, numOS: string) {
@@ -51,11 +60,10 @@ export class ServicoOrdemServicoComponent {
         if (encontrado) {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
             if (ordemServico) {
-                // Aqui você pode obter as peças e suas descrições
-                ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; }) => {
-                    // Armazena os dados nas variáveis se necessário
-                    this.codServico.push(servicos.codigo_servico); // ou criar um array para armazenar
-                    this.descServico.push(servicos.descricao); // ou criar um array para armazenar
+                ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; tempo_duracao: number}) => {
+                    this.codServico.push(servicos.codigo_servico); 
+                    this.descServico.push(servicos.descricao);
+                    this.tempoServico.push(servicos.tempo_duracao);
                 });
             } else {
                 alert("Ordem de Serviço não encontrada.");

@@ -25,12 +25,12 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": "46,56"
+              "tempo_duracao": 1974
             },
             {
               "codigo_servico": "S002",
               "descricao": "Alinhamento e Balanceamento",
-              "tempo_duracao": "30 minutos"
+              "tempo_duracao": 1644
             }
           ]
         }
@@ -61,12 +61,12 @@
             {
               "codigo_servico": "S003",
               "descricao": "Troca de Filtro de Ar",
-              "tempo_duracao": ""
+              "tempo_duracao": 0
             },
             {
               "codigo_servico": "S004",
               "descricao": "Troca da Bateria",
-              "tempo_duracao": ""
+              "tempo_duracao": 10114
             }
           ]
         }
@@ -93,7 +93,7 @@
             {
               "codigo_servico": "S005",
               "descricao": "Troca de Óleo do Motor",
-              "tempo_duracao": ""
+              "tempo_duracao": 0
             }
           ]
         }
@@ -120,7 +120,7 @@
             {
               "codigo_servico": "S006",
               "descricao": "Troca de Pneus",
-              "tempo_duracao": ""
+              "tempo_duracao": 37
             }
           ]
         }
@@ -151,12 +151,12 @@
             {
               "codigo_servico": "S007",
               "descricao": "Troca de Bateria",
-              "tempo_duracao": ""
+              "tempo_duracao": 0
             },
             {
               "codigo_servico": "S008",
               "descricao": "Substituição de Lâmpadas",
-              "tempo_duracao": ""
+              "tempo_duracao": 0
             }
           ]
         }
@@ -183,7 +183,7 @@
             {
               "codigo_servico": "S009",
               "descricao": "Troca de Disco de Freio",
-              "tempo_duracao": "1 hora"
+              "tempo_duracao": 0
             }
           ]
         }
@@ -214,12 +214,12 @@
             {
               "codigo_servico": "S010",
               "descricao": "Troca de Filtro de Óleo",
-              "tempo_duracao": "30 minutos"
+              "tempo_duracao": 4500
             },
             {
               "codigo_servico": "S011",
               "descricao": "Substituição das Velas",
-              "tempo_duracao": "45 minutos"
+              "tempo_duracao": 0
             }
           ]
         }
@@ -246,7 +246,7 @@
             {
               "codigo_servico": "S012",
               "descricao": "Troca de Bateria",
-              "tempo_duracao": "1 hora"
+              "tempo_duracao": 0
             }
           ]
         }
@@ -273,7 +273,7 @@
             {
               "codigo_servico": "S013",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": "30 minutos"
+              "tempo_duracao": 0
             }
           ]
         }
@@ -300,7 +300,7 @@
             {
               "codigo_servico": "S014",
               "descricao": "Troca de Pastilhas de Freio",
-              "tempo_duracao": "1 hora"
+              "tempo_duracao": 0
             }
           ]
         }
