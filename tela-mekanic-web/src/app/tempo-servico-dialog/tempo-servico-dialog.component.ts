@@ -91,11 +91,10 @@ export class TempoServicoDialogComponent {
   guardarTempo(): void {
     const tempoDuracao = this.dias * 86400 + this.horas * 3600 + this.minutos * 60 + this.segundos;
     
-    alert(`minutos ${this.minutos}`);
     
     // Aqui você chamaria o método para atualizar o tempo no JSON
     this.service.updateTempo(this.placa, this.numOS, this.codigoServico, tempoDuracao).subscribe(response => {
-        alert('Tempo de duração atualizado: '+ response);
+        //alert('Tempo de duração atualizado: '+ response);
     });
   }
 }

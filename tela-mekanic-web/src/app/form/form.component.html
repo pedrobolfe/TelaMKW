@@ -1,48 +1,50 @@
-<div class="card mt-1">
-    <div class="card-body">
-        <form [formGroup]="form" >
-            <div class="row">
-                <div class="col">
-                    <label for="placa" class="form-label">Placa*</label>
-                    <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa" minlength="8" maxlength="">
-                </div>
-                <div class="col">
-                    <label for="numOs" class="form-label">OS*</label>
-                    <input type="text" formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
-                    <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
-                        <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+<div class="container mt-3">
+    <div class="card mt-1">
+        <div class="card-body">
+            <form [formGroup]="form" >
+                <div class="row g-3">
+                    <div class="col-md-6 col-12 ">
+                        <label for="placa" class="form-label">Placa*</label>
+                        <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa" minlength="8" maxlength="">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="numOs" class="form-label">OS*</label>
+                        <input type="text" formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
+                        <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
+                            <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-4">
-                    <label for="placa" class="form-label">Placa</label>
-                    <input type="text" formControlName="outPlaca" class="form-control text-uppercase" readonly>
+                <hr>
+                <div class="row g-3">
+                    <div class="col-4">
+                        <label for="placa" class="form-label">Placa</label>
+                        <input type="text" formControlName="outPlaca" class="form-control text-uppercase" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label for="numOs" class="form-label">Marca</label>
+                        <input type="text" formControlName="outMarca" class="form-control text-uppercase" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label for="numOs" class="form-label">Modelo</label>
+                        <input type="text" formControlName="outModelo" class="form-control text-uppercase" readonly>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <label for="numOs" class="form-label">Marca</label>
-                    <input type="text" formControlName="outMarca" class="form-control text-uppercase" readonly>
+                <div class="row g-3">
+                    <div class="col-4">
+                        <label for="placa" class="form-label">Chassi</label>
+                        <input type="text" formControlName="outChassi" class="form-control text-uppercase" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label for="numOs" class="form-label">Cilindrada</label>
+                        <input type="text" formControlName="outCilindrada" class="form-control text-uppercase" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label for="numOs" class="form-label">Ano/Modelo</label>
+                        <input type="text" formControlName="outAnoModelo" class="form-control text-uppercase" readonly>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <label for="numOs" class="form-label">Modelo</label>
-                    <input type="text" formControlName="outModelo" class="form-control text-uppercase" readonly>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <label for="placa" class="form-label">Chassi</label>
-                    <input type="text" formControlName="outChassi" class="form-control text-uppercase" readonly>
-                </div>
-                <div class="col-4">
-                    <label for="numOs" class="form-label">Cilindrada</label>
-                    <input type="text" formControlName="outCilindrada" class="form-control text-uppercase" readonly>
-                </div>
-                <div class="col-4">
-                    <label for="numOs" class="form-label">Ano/Modelo</label>
-                    <input type="text" formControlName="outAnoModelo" class="form-control text-uppercase" readonly>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

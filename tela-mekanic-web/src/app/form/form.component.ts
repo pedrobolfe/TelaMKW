@@ -43,7 +43,9 @@ export class FormComponent {
   }
 
   getPopula(): void {
-    this.consulta(this.form.get('inPlaca')?.value, this.form.get('numOS')?.value);
+    const placa = this.form.get('inPlaca')?.value.toUpperCase();
+    const os = this.form.get('numOS')?.value.toUpperCase();
+    this.consulta(placa, os);
   }
 
   onRefresh() {
@@ -70,7 +72,6 @@ export class FormComponent {
               outCilindrada: encontrado.cilindrada,
               outAnoModelo: encontrado.Ano_anoModelo,
             });
-            //this.tempoServicoComponent.guardarTempo()
           }
         } else {
           alert("Placa e Ordem de Serviço não encontrados")

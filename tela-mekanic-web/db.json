@@ -25,7 +25,7 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 1974
+              "tempo_duracao": 1977
             },
             {
               "codigo_servico": "S002",
@@ -219,7 +219,7 @@
             {
               "codigo_servico": "S011",
               "descricao": "Substituição das Velas",
-              "tempo_duracao": 0
+              "tempo_duracao": 37
             }
           ]
         }
