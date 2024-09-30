@@ -1,6 +1,4 @@
 <app-form (formPreenchido)="onFormPreenchido($event)" ></app-form>
 
-
 <app-pecas-ordem-servico *ngIf="formPreenchido" [placa]="formPreenchido.placa" [numOS]="formPreenchido.numOS" ></app-pecas-ordem-servico>  
 <app-servico-ordem-servico *ngIf="formPreenchido" [placa]="formPreenchido.placa" [numOS]="formPreenchido.numOS"></app-servico-ordem-servico>
-
