@@ -25,7 +25,7 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 1977
+              "tempo_duracao": 1986
             },
             {
               "codigo_servico": "S002",
@@ -385,6 +385,41 @@
               "codigo_servico": "S015",
               "descricao": "Substituição da Correia Dentada",
               "tempo_duracao": 1200
+            },
+            {
+              "codigo_servico": "S016",
+              "descricao": "Teste",
+              "tempo_duracao": 6812
+            },
+            {
+              "codigo_servico": "S017",
+              "descricao": "Teste2",
+              "tempo_duracao": 13148
+            }
+          ]
+        },
+        {
+          "numero": "OS012",
+          "pecas": [
+            {
+              "codigo_peca": "P016",
+              "descricao": "Filtro de Ar"
+            },
+            {
+              "codigo_peca": "P017",
+              "descricao": "Óleo do Motor"
+            }
+          ],
+          "servicos": [
+            {
+              "codigo_servico": "S018",
+              "descricao": "Troca de Filtro de Ar",
+              "tempo_duracao": 1500
+            },
+            {
+              "codigo_servico": "S019",
+              "descricao": "Troca de Óleo",
+              "tempo_duracao": 2135
             }
           ]
         }

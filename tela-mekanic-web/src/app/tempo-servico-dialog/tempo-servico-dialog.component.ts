@@ -20,9 +20,10 @@ export class TempoServicoDialogComponent {
     private service: FormServiceService
   ) {}
 
-  placa: string = '';
+  placa: string = ''; // para buscar os dados
   numOS: string = '';
-  codigoServico: string = '';
+
+  codigoServico: string = ''; // armazenar esses dados para colocar no dialog
   descServico: string = '';
 
   intervalId: any;
@@ -32,21 +33,23 @@ export class TempoServicoDialogComponent {
   segundos: number = 0;
   contando: boolean = false;
 
-  // Abrir o modal usando Bootstrap
+  // abrir o modal usando Bootstrap
   openModel(descServ: string, codServico: string, out_placa: string, numeroOS: string) {
-    this.placa = out_placa;
-    this.numOS = numeroOS;
-    this.descServico = descServ;
-    this.codigoServico = codServico;
-
+    // atribui os valores recebidos aos atributos da classe
+    this.placa = out_placa; 
+    this.numOS = numeroOS; 
+    this.descServico = descServ;  
+    this.codigoServico = codServico;  
+  
+    //cria uma instancia do modal Bootstrap, passando o elemento do modal
     const modal = new bootstrap.Modal(this.modalElement.nativeElement);
+    // exibir o modal
     modal.show();
   }
 
-  // Iniciar o temporizador
-  startTempo() {
-    if (!this.contando){
-      this.contando = true;
+  startTempo() {// funcao para dar play no cronometro
+    if (!this.contando){ // se contando for false, pode dar play, senão não
+      this.contando = true; // variavel para ter controle, se o cronometro estiver pausado, ele vai dar play, senão não
       this.intervalId = setInterval(() => {
         this.segundos++;
         if (this.segundos === 60) {
@@ -65,33 +68,26 @@ export class TempoServicoDialogComponent {
     }
   }
 
-  pauseTempo() {
+  pauseTempo() { // função para pausar o cronometro
     clearInterval(this.intervalId);
-    this.contando = false;
+    this.contando = false; // muda o contando para false
   }
 
   // Parar o temporizador e resetar
-  stopTempo() {
+  stopTempo() { // funcao para parar e resetar o cronometro
     this.pauseTempo(); // Para o temporizador
     this.guardarTempo();
 
     this.segundos = 0; // Reseta os segundos
-    this.minutos = 0; 
+    this.minutos = 0; // ....
     this.horas = 0; 
     this.dias = 0;
   }
 
-  setDados(placa: string, numOS: string): void {
-    //alert(" ==== "+placa + ": " + numOS + ": " + codServico)
-    this.placa = placa;
-    this.numOS = numOS;
-  }
-
-  guardarTempo(): void {
+  guardarTempo(): void { // funcao para adicionar o tempo no json (em segundos), se ja tiver um tempo armazenado ele só vai somar.
     const tempoDuracao = this.dias * 86400 + this.horas * 3600 + this.minutos * 60 + this.segundos;
     
-    
-    // Aqui você chamaria o método para atualizar o tempo no JSON
+    // chamandoo método para atualizar o tempo no JSON
     this.service.updateTempo(this.placa, this.numOS, this.codigoServico, tempoDuracao).subscribe(response => {
         //alert('Tempo de duração atualizado: '+ response);
     });

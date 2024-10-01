@@ -69,9 +69,7 @@ export class ServicoOrdemServicoComponent {
         if (encontrado) {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
             if (ordemServico) {
-                this.codServico = []; 
-                this.descServico = [];
-                this.tempoServico = [];
+                this.codServico = [], this.descServico = [], this.tempoServico = []; // reinicializando os arrays
                 ordemServico.servicos.forEach((servicos: { codigo_servico: string; descricao: string; tempo_duracao: number}) => {
                   this.codServico.push(servicos.codigo_servico); 
                   this.descServico.push(servicos.descricao);

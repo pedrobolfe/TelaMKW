@@ -3,9 +3,10 @@
         <p class="m-0">Serviços</p>
     </div>
     <div class="tabele-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Código</th>
                     <th>Descrição</th>
                     <th>Tempo (min)</th>
@@ -14,6 +15,11 @@
             </thead>
             <tbody class="ms-1 p-1" >
               <tr class="m-0" *ngFor="let i of codServico; let index = index">
+                <td class="text-center">
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                      <input type="checkbox" class="form-check-input" style="transform: scale(1.5);">
+                    </div>
+                  </td>
                 <td>
                   <input type="text" formControlName="codigoServico" class="form-control col-2" [value]="codServico[index]" readonly>
                 </td>

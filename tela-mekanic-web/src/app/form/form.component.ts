@@ -15,9 +15,13 @@ import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servi
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
+
+// objetivo: obter uma placa e número de uma OS e consultar um serviço e verificar se os dados existem, 
+// preencher com os dados correspondentes, e emitir um evento com alguns dados
+
 export class FormComponent {
-  form!: FormGroup;
-  dados$: Observable<any> = of([]);
+  form!: FormGroup; // declaração do fomularios, garantindo que não será null ou undefinded
+  dados$: Observable<any> = of([]); // um observable para guardar os dados da consulta
 
   @ViewChild(TempoServicoDialogComponent, {static: true}) tempoServicoComponent!: TempoServicoDialogComponent;
   @Output() formPreenchido = new EventEmitter<{ placa: string; numOS: string}>();
@@ -27,10 +31,9 @@ export class FormComponent {
     private service: FormServiceService
   ){}
 
-
-  ngOnInit(): void {
+  ngOnInit(): void { // inicializando o componente
     this.onRefresh();
-    this.form = this.fb.group({
+    this.form = this.fb.group({ // inicializando o formulario com seus controles e validações
       inPlaca: ['', Validators.required],
       numOS: ['', Validators.required],
       outPlaca: [null],
@@ -42,29 +45,28 @@ export class FormComponent {
     })
   }
 
-  getPopula(): void {
-    const placa = this.form.get('inPlaca')?.value.toUpperCase();
+  getPopula(): void { // vai chamar outro método para consultar os dados e preencher nos campos
+    const placa = this.form.get('inPlaca')?.value.toUpperCase(); // deixar a placa e a OS em maiusculo
     const os = this.form.get('numOS')?.value.toUpperCase();
-    this.consulta(placa, os);
+    this.consulta(placa, os); // funcao para fazer a consulta
   }
 
-  onRefresh() {
+  onRefresh() { // atualizar os dados
     this.dados$ = this.service.getDados()
   }
 
   consulta(placa: string, numOS: string) {
-
-    if (placa && numOS) {
+    if (placa && numOS) { // se placa e os existir 
       this.dados$.subscribe(dados => {
         placa = placa.toUpperCase();
         numOS = numOS.toUpperCase();
-        this.formPreenchido.emit({ placa, numOS });
-  
+        this.formPreenchido.emit({ placa, numOS }); // emitir um evento com a placa e os para se comunicar com outros componentes
+        // erifica se o veiculo com a placa e OS existem
         const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) => item.placa === placa && item.ordemServico.some(os => os.numero === numOS));
-        if (encontrado){
-          const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
+        if (encontrado){ // se existir
+          const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS); // localizar o veiculo e a os informada
           if (ordemServico) {
-            this.form.patchValue({
+            this.form.patchValue({ // preencher os campos com os dados
               outPlaca: encontrado.placa,
               outMarca: encontrado.marca,
               outModelo: encontrado.modelo,
@@ -74,12 +76,11 @@ export class FormComponent {
             });
           }
         } else {
-          alert("Placa e Ordem de Serviço não encontrados")
+          console.log("Placa e Ordem de Serviço não encontrados")
         }
     });
     } else {
-      alert("Digite a placa e/ou o número da Ordem de Serviço")
+      console.log("Digite a placa e/ou o número da Ordem de Serviço")
     }
-    
   }
 }
