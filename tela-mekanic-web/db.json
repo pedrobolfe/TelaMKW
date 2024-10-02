@@ -25,12 +25,12 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 1986
+              "tempo_duracao": 1991
             },
             {
               "codigo_servico": "S002",
               "descricao": "Alinhamento e Balanceamento",
-              "tempo_duracao": 1875
+              "tempo_duracao": 1940
             }
           ]
         }
