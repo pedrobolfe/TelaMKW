@@ -1,7 +1,7 @@
-<div class="card mt-1">
-    <div class="card-body">
-        <form [formGroup]="form" >
-            <div class="row g-3">
+<div class="card mt-1 py-0">
+    <div class="card-body pt-1 py-1">
+        <form [formGroup]="form" class="">
+            <div class="row g-3 pt-0">
                 <div class="col-6 col-md-3">
                     <label for="placa" class="form-label">Placa*</label>
                     <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa" minlength="8" maxlength="8">
@@ -9,7 +9,7 @@
                 <div class="col-6 col-md-3">
                     <label for="numOs" class="form-label">OS*</label>
                     <div class="input-group">
-                        <input type="text" formControlName="numOS" class="form-control text-uppercase" placeholder="OS" (blur)="getPopula()">
+                        <input type="text" formControlName="numOS" class="form-control text-uppercase " placeholder="OS" (blur)="getPopula()">
                         <span class="input-group-text"style="cursor: pointer;">
                             <i class="bi bi-search"></i>
                         </span>

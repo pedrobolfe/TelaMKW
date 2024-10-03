@@ -25,7 +25,7 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 1991
+              "tempo_duracao": 1993
             },
             {
               "codigo_servico": "S002",
@@ -183,7 +183,7 @@
             {
               "codigo_servico": "S009",
               "descricao": "Troca de Disco de Freio",
-              "tempo_duracao": 0
+              "tempo_duracao": 8
             }
           ]
         }
