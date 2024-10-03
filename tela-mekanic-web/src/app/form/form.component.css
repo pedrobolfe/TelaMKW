@@ -5,12 +5,10 @@
 
 .card-body {
     padding: 20px; /* Aumenta o padding para mais espaçamento interno */
-    background-color: #f8f9fa; /* Cor de fundo suave */
 }
 
-.form-label {
-    font-weight: bold; /* Negrito nas labels */
-    color: #495057; /* Cor do texto da label */
+.form-floating label::after {
+    background-color: transparent;
 }
 
 .form-control {
@@ -19,11 +17,6 @@
     box-shadow: none; /* Remove sombra */
     border: none;
     border-bottom: 1px solid #6c757d;
-}
-
-.form-control:focus {
-    border-color: #007bff; /* Cor de destaque no campo focado */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra ao focar */
 }
 
 .text-danger {
@@ -41,7 +34,6 @@ span {
     border: none;
     border-bottom: 1px solid #6c757d;
     background-color: #e3ecf7;
-    
 }
 .row {
     margin-bottom: 1rem; /* Espaçamento entre as linhas do formulário */

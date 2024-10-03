@@ -3,11 +3,33 @@
         <form [formGroup]="form" class="">
             <div class="row g-3 pt-0">
                 <div class="col-6 col-md-3">
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="inPlaca" class="form-control text-uppercase" id="placa" placeholder="Placa" minlength="8" maxlength="8" required>
+                        <label for="placa">Placa*</label>
+                    </div>
+                </div>
+            
+                <div class="col-6 col-md-3">
+                    <div class="input-group mb-2">
+                        <div class="form-floating flex-grow-1" >
+                            <input type="text" formControlName="numOS" class="form-control text-uppercase"  id="numOs" placeholder="OS" (blur)="getPopula()" required>
+                            <label for="numOs" >OS*</label>
+                        </div>
+                        <span class="input-group-text" style="cursor: pointer;">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                    <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
+                        <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+                    </div>
+                </div>
+                  
+                <!-- <div class="col-6 col-md-3">
                     <label for="placa" class="form-label">Placa*</label>
                     <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa" minlength="8" maxlength="8">
                 </div>
                 <div class="col-6 col-md-3">
-                    <label for="numOs" class="form-label">OS*</label>
+                    
                     <div class="input-group">
                         <input type="text" formControlName="numOS" class="form-control text-uppercase " placeholder="OS" (blur)="getPopula()">
                         <span class="input-group-text"style="cursor: pointer;">
@@ -17,34 +39,47 @@
                     <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
                         <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row g-3">
                 <div class="col-4">
-                    <label for="placa" class="form-label">Placa</label>
-                    <input type="text" formControlName="outPlaca" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outPlaca" class="form-control text-uppercase" id="outPlaca" placeholder="Placa" readonly>
+                        <label for="outPlaca">Placa</label>
+                    </div>
                 </div>
                 <div class="col-4">
-                    <label for="numOs" class="form-label">Marca</label>
-                    <input type="text" formControlName="outMarca" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outMarca" class="form-control text-uppercase" id="outMarca" placeholder="Marca" readonly>
+                        <label for="outMarca">Marca</label>
+                    </div>
                 </div>
                 <div class="col-4">
-                    <label for="numOs" class="form-label">Modelo</label>
-                    <input type="text" formControlName="outModelo" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outModelo" class="form-control text-uppercase" id="outModelo" placeholder="Modelo" readonly>
+                        <label for="outModelo">Modelo</label>
+                    </div>
                 </div>
             </div>
+            
             <div class="row g-3">
                 <div class="col-4">
-                    <label for="placa" class="form-label">Chassi</label>
-                    <input type="text" formControlName="outChassi" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outChassi" class="form-control text-uppercase" id="outChassi" placeholder="Chassi" readonly>
+                        <label for="outChassi">Chassi</label>
+                    </div>
                 </div>
                 <div class="col-4">
-                    <label for="numOs" class="form-label">Cilindrada</label>
-                    <input type="text" formControlName="outCilindrada" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outCilindrada" class="form-control text-uppercase" id="outCilindrada" placeholder="Cilindrada" readonly>
+                        <label for="outCilindrada">Cilindrada</label>
+                    </div>
                 </div>
                 <div class="col-4">
-                    <label for="numOs" class="form-label">Ano/Modelo</label>
-                    <input type="text" formControlName="outAnoModelo" class="form-control text-uppercase" readonly>
+                    <div class="form-floating mb-2">
+                        <input type="text" formControlName="outAnoModelo" class="form-control text-uppercase" id="outAnoModelo" placeholder="Ano/Modelo" readonly>
+                        <label for="outAnoModelo">Ano/Modelo</label>
+                    </div>
                 </div>
             </div>
         </form>
