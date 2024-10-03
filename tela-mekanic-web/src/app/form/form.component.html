@@ -8,7 +8,6 @@
                         <label for="placa">Placa*</label>
                     </div>
                 </div>
-            
                 <div class="col-6 col-md-3">
                     <div class="input-group mb-2">
                         <div class="form-floating flex-grow-1" >
@@ -23,13 +22,11 @@
                         <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
                     </div>
                 </div>
-                  
                 <!-- <div class="col-6 col-md-3">
                     <label for="placa" class="form-label">Placa*</label>
                     <input type="text" formControlName="inPlaca" class="form-control text-uppercase" placeholder="Placa" minlength="8" maxlength="8">
                 </div>
                 <div class="col-6 col-md-3">
-                    
                     <div class="input-group">
                         <input type="text" formControlName="numOS" class="form-control text-uppercase " placeholder="OS" (blur)="getPopula()">
                         <span class="input-group-text"style="cursor: pointer;">
