@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,6 +23,7 @@ import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servi
 export class FormComponent {
   form!: FormGroup; // declaração do fomularios, garantindo que não será null ou undefinded
   dados$: Observable<any> = of([]); // um observable para guardar os dados da consulta
+  isHandset$: Observable<boolean> = of(false);
 
   @ViewChild(TempoServicoDialogComponent, {static: true}) tempoServicoComponent!: TempoServicoDialogComponent;
   @Output() formPreenchido = new EventEmitter<{ placa: string; numOS: string}>();
@@ -32,6 +34,7 @@ export class FormComponent {
   ){}
 
   ngOnInit(): void { // inicializando o componente
+    this.isHandset$ = this.service.isHandset$;
     this.onRefresh();
     this.form = this.fb.group({ // inicializando o formulario com seus controles e validações
       inPlaca: ['', Validators.required],

@@ -1,5 +1,5 @@
 .card-header {
-    background-color: #007BFF; /* Azul especificado */
+    background-color: #f5f5f5; /* Azul especificado */
     color: white; /* Texto branco */
     border-radius: 0.25rem 0.25rem 0 0;
     padding: 10px; /* Controle de padding */
@@ -24,7 +24,7 @@
 }
 
 input[readonly] {
-    background-color: #e3ecf7;
+    background-color: #f5f5f5;
     border: none;
 }
 

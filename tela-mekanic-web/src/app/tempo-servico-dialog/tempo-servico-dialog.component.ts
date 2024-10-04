@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormServiceService } from '../form-service/form-service.service';
+import { Observable, of } from 'rxjs';
 
 declare var bootstrap: any;
 
@@ -15,10 +16,15 @@ declare var bootstrap: any;
 })
 export class TempoServicoDialogComponent {
   @ViewChild('tempoServicoModal') modalElement!: ElementRef;
+  isHandset$: Observable<boolean> = of(false);
 
   constructor (
     private service: FormServiceService
   ) {}
+
+  ngOnInit() {
+    this.isHandset$ = this.service.isHandset$;
+  }
 
   placa: string = ''; // para buscar os dados
   numOS: string = '';

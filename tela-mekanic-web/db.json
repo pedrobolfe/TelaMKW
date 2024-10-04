@@ -25,12 +25,12 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 1993
+              "tempo_duracao": 2307
             },
             {
               "codigo_servico": "S002",
               "descricao": "Alinhamento e Balanceamento",
-              "tempo_duracao": 1940
+              "tempo_duracao": 1968
             }
           ]
         }
@@ -384,7 +384,7 @@
             {
               "codigo_servico": "S015",
               "descricao": "Substituição da Correia Dentada",
-              "tempo_duracao": 1200
+              "tempo_duracao": 1584
             },
             {
               "codigo_servico": "S016",

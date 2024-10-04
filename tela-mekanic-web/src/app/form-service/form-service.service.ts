@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, delay, Observable, switchMap } from 'rxjs';
 import { Carro } from './Modelo'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormServiceService {
-  constructor(
-    private http: HttpClient
-  ) { }
+    isHandset$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  private readonly API_URL = 'http://localhost:3000/carros';
+  constructor(
+    private http: HttpClient,
+    private breakpointObserver: BreakpointObserver
+  ) { 
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small])
+      .subscribe(result => {
+        this.isHandset$.next(result.matches);
+      });
+
+  }
+
+
+  private readonly API_URL = 'http://localhost:3000/carros'; // 192.168.2.190:4200
 
   getDados(): any {
     return this.http.get<Carro[]>(this.API_URL).pipe();

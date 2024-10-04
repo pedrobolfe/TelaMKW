@@ -17,6 +17,7 @@ import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servi
 export class ServicoOrdemServicoComponent {
   @ViewChild(TempoServicoDialogComponent) tempoServicoComponent!: TempoServicoDialogComponent;
   outDescServico: string = "";
+  isHandset$: Observable<boolean> = of(false);
 
   constructor(
     private service: FormServiceService
@@ -35,6 +36,7 @@ export class ServicoOrdemServicoComponent {
   tempoServico: number[] = [];
 
   ngOnInit() {
+    this.isHandset$ = this.service.isHandset$;
     this.dados$ = this.service.getDados();
     
     combineLatest([this.placa$, this.numOS$]).subscribe(([placa, numOS]) => {

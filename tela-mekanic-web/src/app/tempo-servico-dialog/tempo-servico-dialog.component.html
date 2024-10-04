@@ -1,43 +1,93 @@
-<div class="modal fade" #tempoServicoModal tabindex="-1" aria-labelledby="tempoServicoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"> <!-- Modal fica centralizado -->
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white container-fluid">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h5 class="modal-title mx-auto my-3" id="tempoServicoModalLabel"><strong>CRONÔMETRO</strong></h5>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-            </div>
-            <div class="modal-body text-center">
-                <div class="row">
-                    <div class="col" *ngIf="dias">
-                        <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + dias).slice(-2) }}</h1>
-                        <label class="text-muted">Dias</label>
+<ng-container *ngIf="isHandset$ | async; then verticalTemplate; else horizontalTemplate"></ng-container>
+
+<ng-template #horizontalTemplate>
+    <div class="modal fade" #tempoServicoModal tabindex="-1" aria-labelledby="tempoServicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white container-fluid">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h5 class="modal-title mx-auto my-3" id="tempoServicoModalLabel"><strong>CRONÔMETRO</strong></h5>
                     </div>
-                    <div class="col" *ngIf="horas || dias">
-                        <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + horas).slice(-2) }}</h1>
-                        <label class="text-muted">Horas</label>
-                    </div>
-                    <div class="col">
-                        <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + minutos).slice(-2) }}</h1>
-                        <label class="text-muted">Minutos</label>
-                    </div>
-                    <div class="col">
-                        <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + segundos).slice(-2) }}</h1>
-                        <label class="text-muted">Segundos</label>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn-close btn-close-white" (click)="stopTempo()" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                 </div>
-                <div class="alert alert-info text-center mt-4 shadow rounded p-4">
-                    <h3 class="mb-2 text-primary">Código {{ codigoServico }}</h3>
-                    <h2 class="mb-0 text-primary">{{ descServico }}</h2>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="col" *ngIf="dias">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + dias).slice(-2) }}</h1>
+                            <label class="text-muted">Dias</label>
+                        </div>
+                        <div class="col" *ngIf="horas || dias">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + horas).slice(-2) }}</h1>
+                            <label class="text-muted">Horas</label>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + minutos).slice(-2) }}</h1>
+                            <label class="text-muted">Minutos</label>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + segundos).slice(-2) }}</h1>
+                            <label class="text-muted">Segundos</label>
+                        </div>
+                    </div>
+                    <div class="alert alert-info text-center mt-4 shadow rounded p-4">
+                        <h3 class="mb-2 text-primary">Código {{ codigoServico }}</h3>
+                        <h2 class="mb-0 text-primary">{{ descServico }}</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-success" (click)="startTempo()"><i class="fas fa-play fa-lg"></i></button>
-                <button type="button" class="btn btn-warning" (click)="pauseTempo()"><i class="fas fa-pause fa-lg" style="color: white;"></i></button>
-                <button type="button" class="btn btn-danger" (click)="stopTempo()"><i class="fas fa-stop fa-lg"></i></button>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg" (click)="startTempo()"><i class="fas fa-play fa-lg"></i></button>
+                    <button type="button" class="btn btn-warning btn-lg" (click)="pauseTempo()"><i class="fas fa-pause fa-lg" style="color: white;"></i></button>
+                    <button type="button" class="btn btn-danger btn-lg" (click)="stopTempo()"><i class="fas fa-stop fa-lg"></i></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>
+
+<ng-template #verticalTemplate>
+    <div class="modal fade" #tempoServicoModal tabindex="-1" aria-labelledby="tempoServicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Modal fica centralizado -->
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white container-fluid">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h5 class="modal-title mx-auto my-3" id="tempoServicoModalLabel"><strong>CRONÔMETRO</strong></h5>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn-close btn-close-white" (click)="stopTempo()" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="col" *ngIf="dias">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + dias).slice(-2) }}</h1>
+                            <label class="text-muted">Dias</label>
+                        </div>
+                        <div class="col" *ngIf="horas || dias">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + horas).slice(-2) }}</h1>
+                            <label class="text-muted">Horas</label>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + minutos).slice(-2) }}</h1>
+                            <label class="text-muted">Minutos</label>
+                        </div>
+                        <div class="col">
+                            <h1 class="display-1 text-primary bg-light p-3 rounded shadow">{{ ('0' + segundos).slice(-2) }}</h1>
+                            <label class="text-muted">Segundos</label>
+                        </div>
+                    </div>
+                    <div class="alert alert-info text-center mt-4 shadow rounded p-4">
+                        <h4 class="mb-0 text-primary">{{ descServico }}</h4>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-lg" (click)="startTempo()"><i class="fas fa-play fa-lg"></i></button>
+                    <button type="button" class="btn btn-warning btn-lg" (click)="pauseTempo()"><i class="fas fa-pause fa-lg" style="color: white;"></i></button>
+                    <button type="button" class="btn btn-danger btn-lg" (click)="stopTempo()"><i class="fas fa-stop fa-lg"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+

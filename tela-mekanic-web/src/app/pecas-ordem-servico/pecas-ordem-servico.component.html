@@ -1,32 +1,71 @@
-<div class="card mt-3 shadow-sm border-0 py-0">
-  <div class="card-header p-2 bg-primary text-light rounded-top">
-      <p class="m-0">Peças</p>
+<ng-container *ngIf="isHandset$ | async; then verticalTemplate; else horizontalTemplate"></ng-container>
+
+<ng-template #horizontalTemplate>
+  <div class="card mt-3 shadow-sm border-0 py-0">
+      <div class="card-header p-2 bg-primary text-light rounded-top">
+          <p class="m-0">Peças</p>
+      </div>
+      <div class="table-responsive">
+          <table class="table table-hover table-sm">
+              <thead>
+                  <tr>
+                      <th class="col-3">Código</th>
+                      <th class="col-5">Descrição</th>
+                      <th class="col-4 text-center"></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let i of codPeca; let index = index" class="align-middle">
+                      <td>
+                          <input type="text" formControlName="codigoPeca" class="form-control border-0" [value]="codPeca[index]" readonly>
+                      </td>
+                      <td>
+                          <input type="text" formControlName="descricaoPeca" class="form-control border-0" [value]="descPecas[index]" readonly>
+                      </td>
+                      <td class="text-center">
+                          <div class="form-check d-flex justify-content-center align-items-center">
+                              <input type="checkbox" class="form-check-input" style="transform: scale(1.5);" #checkbox>
+                              <label class="form-check-label ms-2">Aplicado</label>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
-  <div class="table-responsive">
-      <table class="table table-hover table-sm">
-          <thead class="table">
-              <tr>
-                  <th class="col-3 col-md-4">Código</th>
-                  <th class="col-5 col-md-5">Descrição</th>
-                  <th class="col-3 col-md-3"></th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let i of codPeca; let index = index" class="align-middle">
-              <td>
-                <input type="text" formControlName="codigoPeca" class="form-control border-0" [value]="codPeca[index]" readonly>
-              </td>
-              <td>
-                <input type="text" formControlName="descricaoPeca" class="form-control border-0" [value]="descPecas[index]" readonly>
-              </td>
-              <td class="text-center">
-                <div class="form-check d-flex justify-content-center align-items-center">
-                  <input type="checkbox" class="form-check-input" style="transform: scale(1.5);" #checkbox>
-                  <label class="form-check-label ms-2">Aplicado</label>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-      </table>  
+</ng-template>
+
+<ng-template #verticalTemplate>
+  <div class="card mt-3 shadow-sm border-0 py-0">
+      <div class="card-header p-2 bg-primary text-light rounded-top">
+          <p class="m-0">Peças</p>
+      </div>
+      <div class="table-responsive">
+          <table class="table table-hover table-sm">
+              <thead class="table">
+                  <tr>
+                      <th class="col-3">Código</th>
+                      <th class="col-7">Descrição</th>
+                      <th class="col-1 text-center">Aplicado</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let i of codPeca; let index = index" class="align-middle">
+                      <td>
+                          <input type="text" formControlName="codigoPeca" class="form-control border-0" [value]="codPeca[index]" readonly>
+                      </td>
+                      <td>
+                          <input type="text" formControlName="descricaoPeca" class="form-control border-0" [value]="descPecas[index]" readonly>
+                      </td>
+                      <td class="text-center">
+                          <div class="form-check d-flex justify-content-center align-items-center">
+                              <input type="checkbox" class="form-check-input" style="transform: scale(1.5);" #checkbox>
+                              <label class="form-check-label ms-2">Aplicado</label>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
-</div>
+</ng-template>

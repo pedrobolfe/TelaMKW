@@ -17,15 +17,18 @@ export class PecasOrdemServicoComponent {
     private service: FormServiceService // injetando o serviço
   ){}
   dados$: Observable<any> = of([]); // Observable que contém os dados retornados pelo serviço, inicializado com um array vazio
-
+  isHandset$: Observable<boolean> = of(false);
+  
    // BehaviorSubjects usados para receber os dados de placa e num da OS de outro componente
   @Input() placa$!: BehaviorSubject<string | undefined>;
   @Input() numOS$!: BehaviorSubject<string | undefined>;
+
   // arrays para guardar temporariamente os dados das peças associadas a ordem de serviço
   codPeca: string[] = [];
   descPecas: string[] = [];
 
   ngOnInit() { // inicializando o  compontente
+    this.isHandset$ = this.service.isHandset$; // ajustar o tamanho de tela de acordo com o dispositivo
     this.dados$ = this.service.getDados(); // obter os dados
     // Usa combineLatest para combinar os últimos valores de placa$ e numOS$
     combineLatest([this.placa$, this.numOS$]).subscribe(([placa, numOS]) => {
