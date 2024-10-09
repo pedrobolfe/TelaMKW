@@ -4,18 +4,25 @@
     <div class="card mt-1 py-0">
         <div class="card-body pt-1 py-1">
             <form [formGroup]="form" class="">
-
                 <div class="row g-3 pt-0">
                     <div class="col-6 col-md-3">
-                        <div class="form-floating mb-2">
-                            <input type="text" formControlName="inPlaca" class="form-control text-uppercase" id="placa" placeholder="Placa" minlength="8" maxlength="8" required>
+                        <div class="form-floating mb-2"  [ngClass]="{
+                            'entrada-invalida': form.get('inPlaca')?.invalid && form.get('inPlaca')?.touched
+                            }">
+                            <input type="text" formControlName="inPlaca" class="form-control text-uppercase" id="placa" 
+                                placeholder="Placa" minlength="7" maxlength="8" required>
                             <label for="placa">Placa*</label>
+                        </div>
+                        <div *ngIf="form.get('inPlaca')?.invalid && form.get('inPlaca')?.touched" class="text-danger">
+                            <div *ngIf="form.get('inPlaca')?.errors?.['required']">Campo obrigatório.</div>
+                            <div *ngIf="form.get('inPlaca')?.errors?.['minlength'] ">Mínimo 7 caracteres.</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="input-group mb-2">
-                            <div class="form-floating flex-grow-1">
-                                <input type="text" formControlName="numOS" class="form-control text-uppercase" id="numOs" placeholder="OS" (blur)="getPopula()" required>
+                            <div class="form-floating flex-grow-1" [ngClass]="{'entrada-invalida': form.get('numOS')?.invalid && form.get('numOS')?.touched}">
+                                <input type="text" formControlName="numOS" class="form-control text-uppercase" id="numOs" 
+                                       placeholder="OS" (blur)="getPopula()"required>
                                 <label for="numOs">OS*</label>
                             </div>
                             <span class="input-group-text" style="cursor: pointer;">
@@ -23,11 +30,16 @@
                             </span>
                         </div>
                         <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
-                            <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+                            <div *ngIf="form.get('numOS')?.errors?.['required']">Campo obrigatório</div>
+                        </div>
+                    </div>
+                    <div *ngIf="form.get('mensagem')?.value" class="col-12">
+                        <div class="alert alert-warning" role="alert">
+                            {{ form.get('mensagem')?.value }}
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="row g-3">
                     <div class="col-4">
                         <div class="form-floating mb-2">
@@ -48,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row g-3">
                     <div class="col-4">
                         <div class="form-floating mb-2">
@@ -69,36 +80,47 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 </ng-template>
 
-
 <ng-template #verticalTemplate>
     <div class="card mt-1 py-0">
         <div class="card-body pt-1 py-1">
-            <form [formGroup]="form" class="">
+            <form [formGroup]="form">
                 <div class="row g-3 pt-0">
                     <div class="col-6">
-                        <div class="form-floating mb-2">
-                            <input type="text" formControlName="inPlaca" class="form-control text-uppercase" id="placa" placeholder="Placa" minlength="8" maxlength="8" required>
+                        <div class="form-floating mb-2"
+                            [ngClass]="{
+                                'entrada-invalida': form.get('inPlaca')?.invalid && form.get('inPlaca')?.touched
+                            }">
+                            <input type="text" formControlName="inPlaca" class="form-control text-uppercase" id="placa" 
+                                placeholder="Placa" minlength="7" maxlength="8" required>
                             <label for="placa">Placa*</label>
+                        </div>
+                        <div *ngIf="form.get('inPlaca')?.invalid && form.get('inPlaca')?.touched" class="text-danger">
+                            <div *ngIf="form.get('inPlaca')?.errors?.['required']">Campo obrigatório</div>
+                            <div *ngIf="form.get('inPlaca')?.errors?.['minlength']">Mínimo 7 caracteres.</div>
                         </div>
                     </div>
                     <div class="col-6 ">
                         <div class="input-group mb-2">
-                            <div class="form-floating flex-grow-1" >
+                            <div class="form-floating flex-grow-1" [ngClass]="{'entrada-invalida': form.get('numOS')?.invalid && form.get('numOS')?.touched}">
                                 <input type="text" formControlName="numOS" class="form-control text-uppercase"  id="numOs" placeholder="OS" (blur)="getPopula()" required>
-                                <label for="numOs" >OS*</label>
+                                <label for="numOs">OS*</label>
                             </div>
                             <span class="input-group-text" style="cursor: pointer;">
                                 <i class="bi bi-search"></i>
                             </span>
                         </div>
                         <div *ngIf="form.get('numOS')?.invalid && form.get('numOS')?.touched" class="text-danger">
-                            <div *ngIf="form.get('numOS')?.errors?.['required']">OS é obrigatória.</div>
+                            <div *ngIf="form.get('numOS')?.errors?.['required']">Campo obrigatório</div>
+                        </div>
+                    </div>
+                    <div *ngIf="form.get('mensagem')?.value">
+                        <div class="alert alert-warning" role="alert">
+                            {{ form.get('mensagem')?.value}}
                         </div>
                     </div>
                 </div>

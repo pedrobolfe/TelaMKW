@@ -56,8 +56,8 @@ export class ServicoOrdemServicoComponent {
     //const dias = Math.floor(tempoSegundos / 86400);
     //const horas = Math.floor((tempoSegundos % 86400) / 3600);
     const minutos = Math.floor((tempoSegundos % 3600) / 60);
-
-    return `${minutos >= 1 ? minutos : "-"}`
+    
+    return `${minutos >= 1 ? minutos : "-"}` 
   }
 
   consulta(placa: string, numOS: string) { // melhoria, realizar apenas uma consulta la no Service, depois consultar la

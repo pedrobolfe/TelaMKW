@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, delay, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { Carro } from './Modelo'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -14,15 +14,14 @@ export class FormServiceService {
     private http: HttpClient,
     private breakpointObserver: BreakpointObserver
   ) { 
-    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small])
+    // ajustar os componentes de acordo com o tamanho da tela do dispositivo
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Small]) 
       .subscribe(result => {
         this.isHandset$.next(result.matches);
       });
-
   }
 
-
-  private readonly API_URL = 'http://localhost:3000/carros'; // 192.168.2.190:4200
+  private readonly API_URL = 'http://localhost:3000/carros'; // 192.168.2.190:4200 mudar no serve.ts também
 
   getDados(): any {
     return this.http.get<Carro[]>(this.API_URL).pipe();
@@ -55,5 +54,6 @@ export class FormServiceService {
             }
         })
     );
-}
+    }
+    
 }

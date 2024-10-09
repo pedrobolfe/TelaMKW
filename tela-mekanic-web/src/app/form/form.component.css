@@ -4,7 +4,7 @@
 }
 
 .card-body {
-    padding: 20px; /* Aumenta o padding para mais espaçamento interno */
+    padding: 20px; 
 }
 
 .form-floating label::after {
@@ -13,32 +13,46 @@
 
 .form-control {
     background-color: #f5f5f5;
-    border-radius: 0; /* Canto levemente arredondado */
-    box-shadow: none; /* Remove sombra */
+    border-radius: 0; 
     border: none;
+    box-shadow: none;
     border-bottom: 1px solid #6c757d;
+}
+
+.form-control:hover{
+    background-color: #e6eaec;
+}
+
+/* Estilo para quando o botao tiver foco */
+.form-control:focus{
+    border-bottom: 2px solid blue;
+}
+
+/* Estilo para entradas invalida */
+.entrada-invalida .form-control{
+    border-bottom: 2px solid red;
+    color: red;
+}
+.entrada-invalida::placeholder {
+    color: transparent;
+}
+
+.entrada-invalida label {
+    color: red;
 }
 
 .text-danger {
-    font-size: 0.875rem; /* Texto de erro menor */
-    font-weight: bold; /* Negrito no erro */
+    font-size: 0.875rem; 
+    font-weight: bold;
 }
 
-hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-top: 1px solid #dee2e6; /* Linha fina entre as seções */
-}
 span {
+    /* background-color: #f5f5f5; */
     border-radius: 0;
     border: none;
-    border-bottom: 1px solid #6c757d;
-    background-color: #f5f5f5;
-}
-.row {
-    margin-bottom: 1rem; /* Espaçamento entre as linhas do formulário */
+    /* border-bottom: 2px solid #6c757d; */
 }
 
-input::placeholder {
-    color: #6c757d; /* Cor de placeholder mais escura */
+.row {
+    margin-bottom: 1rem; 
 }

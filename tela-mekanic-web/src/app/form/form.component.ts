@@ -1,4 +1,3 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,7 +11,7 @@ import { TempoServicoDialogComponent } from '../tempo-servico-dialog/tempo-servi
   imports: [
     CommonModule,
     ReactiveFormsModule
-  ],
+],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
@@ -27,25 +26,27 @@ export class FormComponent {
 
   @ViewChild(TempoServicoDialogComponent, {static: true}) tempoServicoComponent!: TempoServicoDialogComponent;
   @Output() formPreenchido = new EventEmitter<{ placa: string; numOS: string}>();
+  
 
   constructor(
     private fb: FormBuilder,
-    private service: FormServiceService
+    private service: FormServiceService,
   ){}
 
   ngOnInit(): void { // inicializando o componente
-    this.isHandset$ = this.service.isHandset$;
+    this.isHandset$ = this.service.isHandset$; // ajustar de acordo com o tamanho da tela
     this.onRefresh();
-    this.form = this.fb.group({ // inicializando o formulario com seus controles e validações
-      inPlaca: ['', Validators.required],
+    this.form = this.fb.group({ // inicializando o formulario com seus controles e validacoes
+      inPlaca: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
       numOS: ['', Validators.required],
       outPlaca: [null],
       outMarca: [null],
       outModelo: [null],
       outChassi: [null],
       outCilindrada: [null],
-      outAnoModelo: [null]
-    })
+      outAnoModelo: [null],
+      mensagem: [null]
+    });
   }
 
   getPopula(): void { // vai chamar outro método para consultar os dados e preencher nos campos
@@ -58,32 +59,41 @@ export class FormComponent {
     this.dados$ = this.service.getDados()
   }
 
+  formatarPlaca(placa:string) { 
+    //const p2placa = placa.substring(3);
+    return `${placa.substring(0, 3) + "-"+ placa.substring(3)}`;
+  }
+
   consulta(placa: string, numOS: string) {
-    if (placa && numOS) { // se placa e os existir 
+    if (!this.form.get('inPlaca')?.errors && !this.form.get('numOS')?.errors) { // se placa e os existir e sem erros
       this.dados$.subscribe(dados => {
-        placa = placa.toUpperCase();
-        numOS = numOS.toUpperCase();
-        this.formPreenchido.emit({ placa, numOS }); // emitir um evento com a placa e os para se comunicar com outros componentes
+        placa = placa.replace("-", ""); // remover o '-' da placa
+
+        this.formPreenchido.emit({ placa, numOS }); // emitir um evento com a placa e O.S. para se comunicar com outros componentes
         // erifica se o veiculo com a placa e OS existem
         const encontrado = dados.find((item: { placa: string; ordemServico: any[]; }) => item.placa === placa && item.ordemServico.some(os => os.numero === numOS));
         if (encontrado){ // se existir
           const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS); // localizar o veiculo e a os informada
           if (ordemServico) {
             this.form.patchValue({ // preencher os campos com os dados
-              outPlaca: encontrado.placa,
+              outPlaca: this.formatarPlaca(encontrado.placa),
               outMarca: encontrado.marca,
               outModelo: encontrado.modelo,
               outChassi: encontrado.chassi,
               outCilindrada: encontrado.cilindrada,
               outAnoModelo: encontrado.Ano_anoModelo,
+              mensagem: null
             });
+           
           }
         } else {
-          console.log("Placa e Ordem de Serviço não encontrados")
+          this.form.patchValue({ // mensagem de erro
+            mensagem: "Placa e Ordem de Serviço não encontradas"
+          });
         }
     });
     } else {
-      console.log("Digite a placa e/ou o número da Ordem de Serviço")
+      console.log("Digite a placa e/ou o número da Ordem de Serviço corretamente");
     }
   }
 }

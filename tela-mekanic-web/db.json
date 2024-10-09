@@ -2,7 +2,7 @@
   "carros": [
     {
       "id": "1",
-      "placa": "ABC-1234",
+      "placa": "ABC1234",
       "marca": "Ford",
       "modelo": "Fiesta",
       "chassi": "1FADP3F29FL200001",
@@ -25,12 +25,12 @@
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 2307
+              "tempo_duracao": 3245
             },
             {
               "codigo_servico": "S002",
               "descricao": "Alinhamento e Balanceamento",
-              "tempo_duracao": 1968
+              "tempo_duracao": 1980
             }
           ]
         }
@@ -38,7 +38,7 @@
     },
     {
       "id": "2",
-      "placa": "XYZ-5678",
+      "placa": "XYZ5678",
       "marca": "Chevrolet",
       "modelo": "Onix",
       "chassi": "1G1BC5SM7F7241094",
@@ -74,7 +74,7 @@
     },
     {
       "id": "3",
-      "placa": "ABC-5678",
+      "placa": "ABC5678",
       "marca": "Volkswagen",
       "modelo": "Gol",
       "chassi": "9BWZZZ377VT123456",
@@ -101,7 +101,7 @@
     },
     {
       "id": "4",
-      "placa": "LMN-3456",
+      "placa": "LMN3456",
       "marca": "Fiat",
       "modelo": "Palio",
       "chassi": "9BD185069D0366543",
@@ -128,7 +128,7 @@
     },
     {
       "id": "5",
-      "placa": "XYZ-1234",
+      "placa": "XYZ1234",
       "marca": "Ford",
       "modelo": "Focus",
       "chassi": "1FADP3F29FL200002",
@@ -164,7 +164,7 @@
     },
     {
       "id": "6",
-      "placa": "MNO-7890",
+      "placa": "MNO7890",
       "marca": "Honda",
       "modelo": "Civic",
       "chassi": "1HGCM82633A123456",
@@ -191,7 +191,7 @@
     },
     {
       "id": "7",
-      "placa": "JKL-4567",
+      "placa": "JKL4567",
       "marca": "Toyota",
       "modelo": "Corolla",
       "chassi": "1NXBR32E54Z123456",
@@ -227,7 +227,7 @@
     },
     {
       "id": "8",
-      "placa": "RST-1122",
+      "placa": "RST1122",
       "marca": "Nissan",
       "modelo": "Kicks",
       "chassi": "3N1AB7AP5FL123456",
@@ -275,7 +275,7 @@
     },
     {
       "id": "10",
-      "placa": "STU-5566",
+      "placa": "STU5566",
       "marca": "Peugeot",
       "modelo": "208",
       "chassi": "VF3CCBFV1J1234567",
@@ -302,7 +302,7 @@
     },
     {
       "id": "11",
-      "placa": "MNO-5678",
+      "placa": "MNO5678",
       "marca": "Ford",
       "modelo": "Maverick",
       "chassi": "1FABP4236GH170123",
@@ -338,7 +338,7 @@
     },
     {
       "id": "12",
-      "placa": "XYZ-5678",
+      "placa": "XYZ5678",
       "marca": "Dodge",
       "modelo": "Dart",
       "chassi": "WP0ZZZ96ZKS123456",
@@ -365,7 +365,7 @@
     },
     {
       "id": "13",
-      "placa": "GHI-7890",
+      "placa": "GHI7890",
       "marca": "Chevrolet",
       "modelo": "Opala",
       "chassi": "3N1AB7AP5FL123457",
