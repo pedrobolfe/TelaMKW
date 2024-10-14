@@ -14,23 +14,27 @@
           "pecas": [
             {
               "codigo_peca": "P001",
-              "descricao": "Pastilhas de Freio"
+              "descricao": "Pastilhas de Freio",
+              "aplicado": true
             },
             {
               "codigo_peca": "P002",
-              "descricao": "Filtro de Óleo"
+              "descricao": "Filtro de Óleo",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
               "codigo_servico": "S001",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 3245
+              "tempo_duracao": 3245,
+              "aplicado": false
             },
             {
               "codigo_servico": "S002",
               "descricao": "Alinhamento e Balanceamento",
-              "tempo_duracao": 1980
+              "tempo_duracao": 1984,
+              "aplicado": false
             }
           ]
         }
@@ -38,132 +42,6 @@
     },
     {
       "id": "2",
-      "placa": "XYZ5678",
-      "marca": "Chevrolet",
-      "modelo": "Onix",
-      "chassi": "1G1BC5SM7F7241094",
-      "cilindrada": "1.0",
-      "Ano_anoModelo": "2018/2018",
-      "ordemServico": [
-        {
-          "numero": "OS002",
-          "pecas": [
-            {
-              "codigo_peca": "P003",
-              "descricao": "Filtro de Ar"
-            },
-            {
-              "codigo_peca": "P004",
-              "descricao": "Bateria"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S003",
-              "descricao": "Troca de Filtro de Ar",
-              "tempo_duracao": 0
-            },
-            {
-              "codigo_servico": "S004",
-              "descricao": "Troca da Bateria",
-              "tempo_duracao": 10114
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "placa": "ABC5678",
-      "marca": "Volkswagen",
-      "modelo": "Gol",
-      "chassi": "9BWZZZ377VT123456",
-      "cilindrada": "1.6",
-      "Ano_anoModelo": "2017/2017",
-      "ordemServico": [
-        {
-          "numero": "OS003",
-          "pecas": [
-            {
-              "codigo_peca": "P005",
-              "descricao": "Óleo do Motor"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S005",
-              "descricao": "Troca de Óleo do Motor",
-              "tempo_duracao": 0
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "placa": "LMN3456",
-      "marca": "Fiat",
-      "modelo": "Palio",
-      "chassi": "9BD185069D0366543",
-      "cilindrada": "1.4",
-      "Ano_anoModelo": "2016/2016",
-      "ordemServico": [
-        {
-          "numero": "OS004",
-          "pecas": [
-            {
-              "codigo_peca": "P006",
-              "descricao": "Pneus"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S006",
-              "descricao": "Troca de Pneus",
-              "tempo_duracao": 37
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "placa": "XYZ1234",
-      "marca": "Ford",
-      "modelo": "Focus",
-      "chassi": "1FADP3F29FL200002",
-      "cilindrada": "2.0",
-      "Ano_anoModelo": "2019/2019",
-      "ordemServico": [
-        {
-          "numero": "OS005",
-          "pecas": [
-            {
-              "codigo_peca": "P007",
-              "descricao": "Bateria"
-            },
-            {
-              "codigo_peca": "P008",
-              "descricao": "Lâmpadas"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S007",
-              "descricao": "Troca de Bateria",
-              "tempo_duracao": 0
-            },
-            {
-              "codigo_servico": "S008",
-              "descricao": "Substituição de Lâmpadas",
-              "tempo_duracao": 0
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "6",
       "placa": "MNO7890",
       "marca": "Honda",
       "modelo": "Civic",
@@ -172,61 +50,27 @@
       "Ano_anoModelo": "2020/2020",
       "ordemServico": [
         {
-          "numero": "OS006",
+          "numero": "OS002",
           "pecas": [
             {
               "codigo_peca": "P009",
-              "descricao": "Disco de Freio"
+              "descricao": "Disco de Freio",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
-              "codigo_servico": "S009",
+              "codigo_servico": "S003",
               "descricao": "Troca de Disco de Freio",
-              "tempo_duracao": 8
+              "tempo_duracao": 8,
+              "aplicado": false
             }
           ]
         }
       ]
     },
     {
-      "id": "7",
-      "placa": "JKL4567",
-      "marca": "Toyota",
-      "modelo": "Corolla",
-      "chassi": "1NXBR32E54Z123456",
-      "cilindrada": "1.8",
-      "Ano_anoModelo": "2021/2021",
-      "ordemServico": [
-        {
-          "numero": "OS007",
-          "pecas": [
-            {
-              "codigo_peca": "P010",
-              "descricao": "Filtro de Óleo"
-            },
-            {
-              "codigo_peca": "P011",
-              "descricao": "Velas de Ignição"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S010",
-              "descricao": "Troca de Filtro de Óleo",
-              "tempo_duracao": 4500
-            },
-            {
-              "codigo_servico": "S011",
-              "descricao": "Substituição das Velas",
-              "tempo_duracao": 63
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "8",
+      "id": "3",
       "placa": "RST1122",
       "marca": "Nissan",
       "modelo": "Kicks",
@@ -235,46 +79,20 @@
       "Ano_anoModelo": "2022/2022",
       "ordemServico": [
         {
-          "numero": "OS008",
+          "numero": "OS003",
           "servicos": [
             {
-              "codigo_servico": "S012",
+              "codigo_servico": "S004",
               "descricao": "Troca de Bateria",
-              "tempo_duracao": 0
+              "tempo_duracao": 0,
+              "aplicado": false
             }
           ]
         }
       ]
     },
     {
-      "id": "9",
-      "placa": "PQR-3344",
-      "marca": "Hyundai",
-      "modelo": "HB20",
-      "chassi": "KMHUC41DBHU123456",
-      "cilindrada": "1.0",
-      "Ano_anoModelo": "2019/2019",
-      "ordemServico": [
-        {
-          "numero": "OS009",
-          "pecas": [
-            {
-              "codigo_peca": "P013",
-              "descricao": "Óleo do Motor"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S013",
-              "descricao": "Troca de Óleo",
-              "tempo_duracao": 22
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "10",
+      "id": "4",
       "placa": "STU5566",
       "marca": "Peugeot",
       "modelo": "208",
@@ -283,25 +101,27 @@
       "Ano_anoModelo": "2020/2020",
       "ordemServico": [
         {
-          "numero": "",
+          "numero": "OS004",
           "pecas": [
             {
               "codigo_peca": "P014",
-              "descricao": "Pastilhas de Freio"
+              "descricao": "Pastilhas de Freio",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
-              "codigo_servico": "S014",
+              "codigo_servico": "S005",
               "descricao": "Troca de Pastilhas de Freio",
-              "tempo_duracao": 0
+              "tempo_duracao": 0,
+              "aplicado": false
             }
           ]
         }
       ]
     },
     {
-      "id": "11",
+      "id": "5",
       "placa": "MNO5678",
       "marca": "Ford",
       "modelo": "Maverick",
@@ -310,61 +130,38 @@
       "Ano_anoModelo": "1976/1976",
       "ordemServico": [
         {
-          "numero": "OS013",
+          "numero": "OS005",
           "pecas": [
             {
               "codigo_peca": "P018",
-              "descricao": "Filtro de Ar"
+              "descricao": "Filtro de Ar",
+              "aplicado": false
             },
             {
               "codigo_peca": "P019",
-              "descricao": "Radiador"
+              "descricao": "Radiador",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
-              "codigo_servico": "S018",
+              "codigo_servico": "S006",
               "descricao": "Troca do Filtro de Ar",
-              "tempo_duracao": 1800
+              "tempo_duracao": 1800,
+              "aplicado": false
             },
             {
-              "codigo_servico": "S019",
+              "codigo_servico": "S007",
               "descricao": "Troca do Radiador",
-              "tempo_duracao": 3000
+              "tempo_duracao": 3000,
+              "aplicado": false
             }
           ]
         }
       ]
     },
     {
-      "id": "12",
-      "placa": "XYZ5678",
-      "marca": "Dodge",
-      "modelo": "Dart",
-      "chassi": "WP0ZZZ96ZKS123456",
-      "cilindrada": "5.2",
-      "Ano_anoModelo": "1973/1973",
-      "ordemServico": [
-        {
-          "numero": "OS014",
-          "pecas": [
-            {
-              "codigo_peca": "P020",
-              "descricao": "Amortecedores"
-            }
-          ],
-          "servicos": [
-            {
-              "codigo_servico": "S020",
-              "descricao": "Troca de Amortecedores",
-              "tempo_duracao": 2400
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "13",
+      "id": "6",
       "placa": "GHI7890",
       "marca": "Chevrolet",
       "modelo": "Opala",
@@ -373,53 +170,66 @@
       "Ano_anoModelo": "1985/1985",
       "ordemServico": [
         {
-          "numero": "OS011",
+          "numero": "OS006",
           "pecas": [
             {
               "codigo_peca": "P015",
-              "descricao": "Correia Dentada"
+              "descricao": "Correia Dentada",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
-              "codigo_servico": "S015",
+              "codigo_servico": "S008",
               "descricao": "Substituição da Correia Dentada",
-              "tempo_duracao": 1584
+              "tempo_duracao": 1584,
+              "aplicado": false
             },
             {
-              "codigo_servico": "S016",
+              "codigo_servico": "S009",
               "descricao": "Teste",
-              "tempo_duracao": 6812
+              "tempo_duracao": 6812,
+              "aplicado": false
             },
             {
-              "codigo_servico": "S017",
+              "codigo_servico": "S010",
               "descricao": "Teste2",
-              "tempo_duracao": 13148
+              "tempo_duracao": 13148,
+              "aplicado": false
             }
           ]
         },
         {
-          "numero": "OS012",
+          "numero": "OS007",
           "pecas": [
             {
               "codigo_peca": "P016",
-              "descricao": "Filtro de Ar"
+              "descricao": "Filtro de Ar",
+              "aplicado": true
             },
             {
               "codigo_peca": "P017",
-              "descricao": "Óleo do Motor"
+              "descricao": "Óleo do Motor",
+              "aplicado": false
+            },
+            {
+              "codigo_peca": "tsete",
+              "descricao": "teste",
+              "aplicado": false
             }
           ],
           "servicos": [
             {
-              "codigo_servico": "S018",
+              "codigo_servico": "S011",
               "descricao": "Troca de Filtro de Ar",
-              "tempo_duracao": 1500
+              "tempo_duracao": 1500,
+              "aplicado": true
             },
             {
-              "codigo_servico": "S019",
+              "codigo_servico": "S012",
               "descricao": "Troca de Óleo",
-              "tempo_duracao": 2135
+              "tempo_duracao": 2135,
+              "aplicado": false
             }
           ]
         }

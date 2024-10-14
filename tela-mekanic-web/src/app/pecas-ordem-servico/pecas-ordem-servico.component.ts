@@ -26,6 +26,27 @@ export class PecasOrdemServicoComponent {
   // arrays para guardar temporariamente os dados das peças associadas a ordem de serviço
   codPeca: string[] = [];
   descPecas: string[] = [];
+  valAplicado: boolean[] = [];
+
+  onCheckboxChange(index: number, event: Event): void {
+    const checkbox = event.target as HTMLInputElement;
+    this.valAplicado[index] = checkbox.checked; // Atualiza o vetor com o novo estado
+  }
+
+  ordenaList(): void {
+    const indicesOrdenados = this.valAplicado
+      .map((aplicado, index) => ({ aplicado, index }))
+      .sort((a, b) => {
+        // Ordena para que os serviços aplicados (true) fiquem nas últimas posições
+        return Number(a.aplicado) - Number(b.aplicado);
+      })
+      .map(obj => obj.index);
+  
+    // Reorganiza os arrays com base na ordenação por `valAplicado`
+    this.codPeca = indicesOrdenados.map(i => this.codPeca[i]);
+    this.descPecas = indicesOrdenados.map(i => this.descPecas[i]);
+    this.valAplicado = indicesOrdenados.map(i => this.valAplicado[i]);
+  }
 
   ngOnInit() { // inicializando o  compontente
     this.isHandset$ = this.service.isHandset$; // ajustar o tamanho de tela de acordo com o dispositivo
@@ -50,11 +71,13 @@ export class PecasOrdemServicoComponent {
             const ordemServico = encontrado.ordemServico.find((os: { numero: string; }) => os.numero === numOS);
             this.codPeca = [], this.descPecas = []; // Reinicia os arrays de códigos e descrições das peças
             if (ordemServico) {
-                ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; }) => {
+                ordemServico.pecas.forEach((peca: { codigo_peca: string; descricao: string; aplicado: boolean}) => {
                   // se a ordem de serviço for encontrada, preenche os arrays com os dados das peças
                     this.codPeca.push(peca.codigo_peca); 
                     this.descPecas.push(peca.descricao); 
+                    this.valAplicado.push(peca.aplicado)
                 });
+                this.ordenaList();
             } else {
                 console.log("Ordem de Serviço não encontrada.");
             }

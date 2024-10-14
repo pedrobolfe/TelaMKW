@@ -18,10 +18,12 @@ export interface OrdemServico {
 export interface Peca {
     codigo_peca: string;
     descricao: string;
+    aplicado: boolean;
 }
 
 export interface Servico {
     codigo_servico: string;
     descricao: string;
     tempo_duracao: number;
+    aplicado: boolean;
 }
